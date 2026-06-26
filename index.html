@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServeSite | Elite Web Engineering for Premium Restaurants, Cafés & Hotels</title>
+    <meta name="description" content="Custom high-conversion websites for luxury hospitality businesses. Engineered by IIT Madras developers. Optimize your online orders, direct bookings, and local SEO.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#0B0B0F',
+                            card: '#12121A',
+                            accent: '#38BDF8',
+                            accentGlow: 'rgba(56, 189, 248, 0.15)',
+                            textSecondary: '#8F8F9E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Premium custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0F;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #22222F;
+            border-radius: 999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38BDF8;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(18, 18, 26, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.25);
+            box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.1);
+            transform: translateY(-4px);
+        }
+
+        /* Subtle linear-style grid lines */
+        .grid-glow {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        /* Radial glow overlay */
+        .glow-overlay {
+            background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.08), transparent 70%);
+        }
+
+        /* Premium gradient text */
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 20%, #A3A3A3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Active navigation links state */
+        .nav-link-active {
+            color: #38BDF8;
+        }
+        
+        /* Shimmer effect for premium buttons */
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.15) 20%,
+                rgba(255, 255, 255, 0.3) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shimmer 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-gray-200 antialiased font-sans grid-glow overflow-x-hidden">
+
+    <!-- STICKY HEADER -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-bg/60 backdrop-blur-md border-b border-white/5" id="main-header">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <span class="text-brand-bg font-extrabold text-base tracking-tighter">S</span>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-white group-hover:text-sky-400 transition-colors duration-300">ServeSite</span>
+                    <span class="block text-[9px] text-[#8F8F9E] tracking-widest uppercase font-semibold">IITM Studio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-textSecondary">
+                <a href="#services" class="hover:text-white transition-colors duration-200">Capabilities</a>
+                <a href="#benefits" class="hover:text-white transition-colors duration-200">The Edge</a>
+                <a href="#portfolio" class="hover:text-white transition-colors duration-200">Case Studies</a>
+                <a href="#pricing" class="hover:text-white transition-colors duration-200">Pricing</a>
+                <a href="#faq" class="hover:text-white transition-colors duration-200">FAQ</a>
+            </nav>
+
+            <!-- CTA Desktop -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contact" class="shimmer-btn relative overflow-hidden bg-sky-500 hover:bg-sky-400 text-brand-bg font-bold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg shadow-sky-500/10">
+                    Get Free Blueprint
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="md:hidden text-white focus:outline-none" id="menu-btn" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div class="hidden md:hidden absolute top-full left-0 w-full bg-[#0E0E15] border-b border-white/10 px-6 py-8 flex flex-col gap-6" id="mobile-drawer">
+            <nav class="flex flex-col gap-5 text-base font-medium text-brand-textSecondary">
+                <a href="#services" onclick="toggleDrawer()" class="hover:text-white">Capabilities</a>
+                <a href="#benefits" onclick="toggleDrawer()" class="hover:text-white">The Edge</a>
+                <a href="#portfolio" onclick="toggleDrawer()" class="hover:text-white">Case Studies</a>
+                <a href="#pricing" onclick="toggleDrawer()" class="hover:text-white">Pricing</a>
+                <a href="#faq" onclick="toggleDrawer()" class="hover:text-white">FAQ</a>
+            </nav>
+            <a href="#contact" onclick="toggleDrawer()" class="w-full bg-sky-500 text-brand-bg font-bold py-3.5 rounded-xl text-center text-sm uppercase tracking-wider block">
+                Get Free Blueprint
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-36 md:pt-48 pb-24 overflow-hidden glow-overlay">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 text-center relative z-10">
+            <!-- Studio Announcement -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/5 border border-sky-500/20 mb-8 animate-pulse">
+                <span class="flex h-2 w-2 rounded-full bg-sky-400"></span>
+                <span class="text-xs font-semibold tracking-wider text-sky-400 uppercase">Now Booking for Q3 2026</span>
+            </div>
+
+            <!-- Hero Headlines -->
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight text-gradient max-w-5xl mx-auto leading-[1.05] mb-8">
+                Your Restaurant Deserves More Than Just an Instagram Page.
+            </h1>
+            <p class="text-brand-textSecondary text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed mb-12">
+                Social media is a rental. A premium digital domain is <span class="text-white font-medium">real estate</span>. We build custom hospitality engines designed to maximize guest reservations, automate menus, and cut out platform commissions.
+            </p>
+
+            <!-- Call to Actions -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-5 mb-20 max-w-lg mx-auto">
+                <a href="#contact" class="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-brand-bg font-bold px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group shadow-xl shadow-sky-500/10">
+                    Get Free Consultation 
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#portfolio" class="w-full sm:w-auto glass-card text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/5 transition-all flex items-center justify-center gap-2">
+                    View Case Studies
+                </a>
+            </div>
+
+            <!-- Floating Performance Badges -->
+            <div class="flex flex-wrap justify-center gap-3.5 max-w-4xl mx-auto mb-16">
+                <div class="glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs font-medium text-sky-400">
+                    <i data-lucide="smartphone" class="w-4 h-4"></i> Mobile Responsive
+                </div>
+                <div class="glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs font-medium text-emerald-400">
+                    <i data-lucide="zap" class="w-4 h-4"></i> Sub-1s Loading Speed
+                </div>
+                <div class="glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs font-medium text-amber-400">
+                    <i data-lucide="search" class="w-4 h-4"></i> Local SEO Standard
+                </div>
+                <div class="glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs font-medium text-indigo-400">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i> Google Business Synced
+                </div>
+            </div>
+
+            <!-- LIVE PREVIEW CONTAINER / DEVICE MOCKUPS -->
+            <div class="relative w-full max-w-5xl mx-auto mt-12 px-4">
+                <!-- Outer glow shadow -->
+                <div class="absolute inset-0 bg-sky-500/5 rounded-2xl blur-3xl -z-10"></div>
+                
+                <!-- Laptop Mockup (Chassis) -->
+                <div class="glass-card rounded-2xl p-2.5 md:p-4 border-white/10 shadow-2xl relative overflow-hidden aspect-[16/10] sm:aspect-[16/9]">
+                    <!-- Simulated Browser Viewport -->
+                    <div class="w-full h-full rounded-xl bg-[#09090D] overflow-hidden relative group">
+                        <!-- Simulated Top Browser Navigation bar -->
+                        <div class="w-full h-8 bg-[#12121A] border-b border-white/5 flex items-center px-4 justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500/60"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/60"></span>
+                            </div>
+                            <div class="bg-[#1C1C24] px-4 py-1 rounded text-[10px] text-gray-500 flex items-center gap-2 w-48 justify-center">
+                                <i data-lucide="lock" class="w-2.5 h-2.5"></i> luminarydining.com
+                            </div>
+                            <div class="w-6"></div>
+                        </div>
+
+                        <!-- Live preview inside browser -->
+                        <div class="relative h-[calc(100%-2rem)] w-full overflow-y-auto overflow-x-hidden p-6 md:p-12 text-left bg-gradient-to-b from-neutral-900 via-zinc-950 to-neutral-950">
+                            <!-- Hero inside mockup -->
+                            <div class="max-w-xl">
+                                <span class="text-[10px] tracking-widest text-sky-400 uppercase font-bold">MICHELIN INSPIRED DINING</span>
+                                <h3 class="text-2xl md:text-4xl font-serif text-white font-semibold mt-2 mb-4">Crafting Memories, One Palette At A Time.</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed max-w-sm mb-6">Experience hyper-local sustainable fine dining curated by Executive Chef Robert Hale.</p>
+                                <div class="flex gap-3">
+                                    <span class="bg-sky-500 text-brand-bg font-bold px-4 py-2 rounded text-[10px] uppercase tracking-wider">Reserve a Table</span>
+                                    <span class="border border-white/10 hover:border-white/20 text-white px-4 py-2 rounded text-[10px] uppercase tracking-wider">Explore Menu</span>
+                                </div>
+                            </div>
+                            <div class="absolute right-8 top-10 bottom-10 w-1/3 rounded-xl bg-cover bg-center hidden md:block" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800');">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overlapping Mobile Mockup -->
+                <div class="absolute -bottom-8 -right-4 w-[160px] sm:w-[240px] aspect-[9/19] glass-card p-2 rounded-[32px] z-20 shadow-2xl hidden sm:block">
+                    <div class="w-full h-full bg-[#050508] rounded-[26px] overflow-hidden relative">
+                        <!-- Smartphone status bar -->
+                        <div class="h-6 w-full bg-[#12121A] flex items-center justify-between px-4 text-[9px] text-gray-500">
+                            <span>09:41</span>
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="wifi" class="w-2.5 h-2.5"></i>
+                                <i data-lucide="battery" class="w-2.5 h-2.5"></i>
+                            </div>
+                        </div>
+                        <!-- Smartphone app preview -->
+                        <div class="h-[calc(100%-1.5rem)] w-full overflow-y-auto p-4 flex flex-col justify-between text-left">
+                            <div class="mt-4">
+                                <div class="h-6 w-12 bg-sky-500/10 rounded border border-sky-400/20 mb-3 flex items-center justify-center">
+                                    <span class="text-[8px] text-sky-400 font-bold uppercase tracking-widest">Crema</span>
+                                </div>
+                                <h5 class="text-sm font-semibold text-white leading-snug">The Coffee Lab Roasters</h5>
+                                <p class="text-[10px] text-gray-400 mt-1">Sustainably sourced, fresh local roasts shipped straight to your doorstep.</p>
+                            </div>
+                            <!-- Small mockup menu block -->
+                            <div class="bg-white/5 border border-white/10 rounded-xl p-3 my-4">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-[10px] font-semibold text-white">Classic Latte</span>
+                                    <span class="text-[10px] font-bold text-sky-400">₹180</span>
+                                </div>
+                                <p class="text-[8px] text-gray-500">Double espresso shot, silk milk-froth layer.</p>
+                            </div>
+                            <div class="mb-4">
+                                <span class="block bg-sky-500 text-brand-bg text-[10px] font-bold py-2 rounded-lg text-center shadow-lg uppercase tracking-wide">Quick WhatsApp Order</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST SECTION -->
+    <section class="border-y border-white/5 bg-[#0A0A10]/90 py-24 px-6 md:px-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">Our DNA</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mt-2">Engineered with IIT Madras Standard</h2>
+                <p class="text-brand-textSecondary mt-4 font-light text-base leading-relaxed">
+                    We aren't template-flipping freelancers. We are computer science students applying structural optimization, server scalability, and algorithmic search optimization directly to your business footprint.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Trust Point 1 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="p-3 bg-sky-500/5 border border-sky-500/20 rounded-xl text-sky-400 w-fit mb-6">
+                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">IITM Engineering Integrity</h3>
+                    <p class="text-brand-textSecondary text-sm leading-relaxed">
+                        We design lightweight Next.js and pure static code structures. Absolutely zero bloated page builders or slow plug-ins that impact visitor conversions.
+                    </p>
+                </div>
+
+                <!-- Trust Point 2 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="p-3 bg-emerald-500/5 border border-emerald-500/20 rounded-xl text-emerald-400 w-fit mb-6">
+                        <i data-lucide="user-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Direct Founder Contact</h3>
+                    <p class="text-brand-textSecondary text-sm leading-relaxed">
+                        Say goodbye to standard middle-men or project managers. Your single point of contact is the pair of engineering founders coding your interface.
+                    </p>
+                </div>
+
+                <!-- Trust Point 3 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="p-3 bg-indigo-500/5 border border-indigo-500/20 rounded-xl text-indigo-400 w-fit mb-6">
+                        <i data-lucide="wallet" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Zero Hidden Licensing Costs</h3>
+                    <p class="text-brand-textSecondary text-sm leading-relaxed">
+                        We build using robust open-source stacks. You will never pay monthly software premium lock-ins or unexpected subscription overheads.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-32 px-6 md:px-12 max-w-7xl mx-auto relative">
+        <div class="text-center mb-20">
+            <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">Our Capabilities</span>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-gradient mt-2">High-Performance Ecosystems</h2>
+            <p class="text-brand-textSecondary mt-4 max-w-2xl mx-auto font-light text-base leading-relaxed">
+                Whether you run a high-volume Michelin restaurant, local micro-roastery, cloud kitchen networks, or a premium hotel resort.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="glass-card p-8 rounded-2xl group">
+                <i data-lucide="utensils" class="w-8 h-8 text-sky-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-semibold text-white mb-3">Restaurant Websites</h3>
+                <p class="text-brand-textSecondary text-sm leading-relaxed">Immersive layouts presenting food menus, premium table bookings, and high-quality photography integration.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="glass-card p-8 rounded-2xl group">
+                <i data-lucide="coffee" class="w-8 h-8 text-sky-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-semibold text-white mb-3">Café Portals</h3>
+                <p class="text-brand-textSecondary text-sm leading-relaxed">Bespoke narrative layouts constructed to convert digital casuals into physical venue regulars.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="glass-card p-8 rounded-2xl group">
+                <i data-lucide="chef-hat" class="w-8 h-8 text-sky-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-semibold text-white mb-3">Cloud Kitchen Hubs</h3>
+                <p class="text-brand-textSecondary text-sm leading-relaxed">Ultra-light static pages engineered to load sub-second and seamlessly direct users to active food delivery pipelines.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="glass-card p-8 rounded-2xl group">
+                <i data-lucide="hotel" class="w-8 h-8 text-sky-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-semibold text-white mb-3">Luxury Hotels & Stays</h3>
+                <p class="text-brand-textSecondary text-sm leading-relaxed">Multi-level interfaces optimizing native guest room reservation steps, local sights, and custom inquiries.</p>
+            </div>
+            <!-- Card 5 -->
+            <div class="glass-card p-8 rounded-2xl group">
+                <i data-lucide="refresh-cw" class="w-8 h-8 text-sky-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-semibold text-white mb-3">Bespoke Redesign</h3>
+                <p class="text-brand-textSecondary text-sm leading-relaxed">Transform sluggish legacy templates into high-conversion modern architectures with perfect Lighthouse scores.</p>
+            </div>
+            <!-- Card 6 -->
+            <div class="glass-card p-8 rounded-2xl group">
+                <i data-lucide="wrench" class="w-8 h-8 text-sky-400 mb-6 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-semibold text-white mb-3">Dedicated Maintenance</h3>
+                <p class="text-brand-textSecondary text-sm leading-relaxed">Continuous health monitoring, swift daily content updates, secure backups, and platform uptime monitoring.</p>
+            </div>
+        </div>
+
+        <!-- Horizontal integrated value-add ribbon -->
+        <div class="mt-12 p-6 glass-card rounded-2xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+            <div class="flex items-center gap-3 justify-center md:justify-start">
+                <div class="p-1.5 rounded-lg bg-sky-500/10 text-sky-400"><i data-lucide="globe" class="w-5 h-5"></i></div>
+                <span class="text-sm font-medium text-white">Google Profile Sync</span>
+            </div>
+            <div class="flex items-center gap-3 justify-center md:justify-start">
+                <div class="p-1.5 rounded-lg bg-sky-500/10 text-sky-400"><i data-lucide="search" class="w-5 h-5"></i></div>
+                <span class="text-sm font-medium text-white">Semantic SEO Tagging</span>
+            </div>
+            <div class="flex items-center gap-3 justify-center md:justify-start">
+                <div class="p-1.5 rounded-lg bg-sky-500/10 text-sky-400"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                <span class="text-sm font-medium text-white">Workspace Email Setup</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="benefits" class="bg-[#0A0A10]/90 py-32 px-6 md:px-12 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div class="lg:col-span-5">
+                <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">Business Impact</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gradient tracking-tight mt-2 mb-6">Convert Visitors to Active Diners</h2>
+                <p class="text-brand-textSecondary font-light leading-relaxed mb-8">
+                    An Instagram account or Facebook link is owned by algorithms. A high-end custom web system controls your local organic search visibility, builds premium prestige, and saves thousands in aggregator commissions.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex gap-3.5 items-center">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-sky-400 shrink-0"></i>
+                        <span class="text-white font-medium text-sm md:text-base">100% Direct-to-Diner reservation paths</span>
+                    </div>
+                    <div class="flex gap-3.5 items-center">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-sky-400 shrink-0"></i>
+                        <span class="text-white font-medium text-sm md:text-base">Zero commission cuts on local WhatsApp orders</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beautiful interactive benefit grid -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="h-10 w-10 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400 mb-6"><i data-lucide="search"></i></div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Google Visibility</h4>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">Structured local markup ensures your establishment ranks when diners search "restaurants near me".</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="h-10 w-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6"><i data-lucide="star"></i></div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Premium Branding</h4>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">Immaculate animations, micro-interactions, and premium layout structure reflect high quality standards.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="h-10 w-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 mb-6"><i data-lucide="book-open"></i></div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Interactive Menus</h4>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">No more fuzzy, multi-megabyte PDF menus. Dynamic web menus structured cleanly for immediate reading.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6"><i data-lucide="message-square"></i></div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Direct Booking Channels</h4>
+                    <p class="text-brand-textSecondary text-xs leading-relaxed">Seamlessly routing reservations and orders directly to your host stand or kitchen WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON GRID: SOCIAL vs CUSTOM WEBSITE -->
+    <section class="py-32 px-6 md:px-12 max-w-6xl mx-auto relative">
+        <div class="text-center mb-16">
+            <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">The Strategic Reality</span>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mt-2">Why Instagram is No Longer Enough</h2>
+            <p class="text-brand-textSecondary mt-3 text-sm md:text-base max-w-2xl mx-auto">Compare your visitor's journey on a social app versus a bespoke, highly optimized engineering layout.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Instagram Card -->
+            <div class="border border-red-500/10 bg-red-500/[0.01] p-8 md:p-10 rounded-2xl relative overflow-hidden">
+                <div class="flex items-center gap-3 text-red-400 font-bold text-lg mb-8">
+                    <div class="p-2 rounded-xl bg-red-500/10"><i data-lucide="instagram" class="w-6 h-6"></i></div>
+                    Instagram Profile / Link-in-Bio
+                </div>
+                <ul class="space-y-6 text-sm text-brand-textSecondary">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">Cluttered & Distracting</strong>
+                            Diners easily bounce off your page onto feed posts, ads, or competitive food recommendations.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">Invisible to Google Searches</strong>
+                            Local customers searching Google for food tables will never find your Instagram page.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">Clunky Static Image Menus</strong>
+                            Requires zooming into old highlight reels or heavy Google Photos listings to see pricing.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">No Native Action Paths</strong>
+                            Forces clients to copy paste phone numbers or use fragile third-party bio routing nodes.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Professional Website Card -->
+            <div class="border border-sky-500/20 bg-sky-500/[0.01] p-8 md:p-10 rounded-2xl relative overflow-hidden shadow-xl shadow-sky-500/[0.02]">
+                <div class="flex items-center gap-3 text-sky-400 font-bold text-lg mb-8">
+                    <div class="p-2 rounded-xl bg-sky-500/10"><i data-lucide="globe" class="w-6 h-6"></i></div>
+                    ServeSite Bespoke Ecosystem
+                </div>
+                <ul class="space-y-6 text-sm text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">100% Immersive Brand Attention</strong>
+                            Complete focus on your visual design, guest narratives, menu pricing, and space aesthetics.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">Ranked Google Presence</strong>
+                            Optimized structural microdata ranks your name for high-intent search queries instantly.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">Clean, Searchable Menus</strong>
+                            Light responsive grids making exploration of dish options, allergen tags, and pricing smooth.
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-0.5">Direct Booking Workflows</strong>
+                            Integrated simple forms that feed booking details straight to kitchen or manager notifications.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE CASE STUDIES -->
+    <section id="portfolio" class="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">Case Studies</span>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-gradient mt-2">Recent Deployments</h2>
+            <p class="text-brand-textSecondary mt-3 text-sm md:text-base max-w-xl mx-auto">Explore the actual performance differences we built for our luxury hospitality partners.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Project 1 (Interactive Slider Card) -->
+            <div class="group">
+                <!-- Before / After Container -->
+                <div class="glass-card aspect-[16/10] rounded-2xl overflow-hidden mb-6 relative">
+                    <!-- Before state -->
+                    <div id="p1-before" class="absolute inset-0 bg-neutral-900 flex flex-col justify-center items-center p-8 transition-opacity duration-500">
+                        <div class="absolute top-4 left-4 bg-red-500/10 text-red-400 text-[10px] font-bold px-2.5 py-1 rounded border border-red-500/20 uppercase tracking-widest">Before: Instagram Link</div>
+                        <p class="font-serif text-lg text-gray-500 text-center italic max-w-xs">"Static PDFs. Outdated Pricing. Fractured Booking Journey."</p>
+                    </div>
+                    <!-- After state (Active) -->
+                    <div id="p1-after" class="absolute inset-0 bg-cover bg-center transition-opacity duration-500" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1000');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-sky-500/10 text-sky-400 text-[10px] font-bold px-2.5 py-1 rounded border border-sky-500/20 uppercase tracking-widest">After: ServeSite Custom</div>
+                    </div>
+                    
+                    <!-- Toggle Controls -->
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center z-20">
+                        <div class="flex gap-2">
+                            <button onclick="toggleProjectView('p1', 'before')" id="p1-btn-before" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">Before</button>
+                            <button onclick="toggleProjectView('p1', 'after')" id="p1-btn-after" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-brand-bg transition-colors">After</button>
+                        </div>
+                        <span class="glass-card px-3 py-1.5 rounded-lg text-[10px] font-mono tracking-wider text-sky-400 uppercase">Deployed in 10 Days</span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Premium Dining Bistro</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">Gourmet Guild & Suites</h3>
+                        <p class="text-brand-textSecondary text-sm mt-3 leading-relaxed max-w-lg">Bespoke dynamic platform featuring clean reservation pipelines, optimized digital menus, and highly targeted neighborhood local search markup.</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-emerald-400 font-extrabold text-xl leading-none">+142%</p>
+                        <p class="text-brand-textSecondary text-[9px] uppercase tracking-widest mt-1">Direct Bookings</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 (Interactive Slider Card) -->
+            <div class="group">
+                <!-- Before / After Container -->
+                <div class="glass-card aspect-[16/10] rounded-2xl overflow-hidden mb-6 relative">
+                    <!-- Before state -->
+                    <div id="p2-before" class="absolute inset-0 bg-neutral-900 flex flex-col justify-center items-center p-8 transition-opacity duration-500">
+                        <div class="absolute top-4 left-4 bg-red-500/10 text-red-400 text-[10px] font-bold px-2.5 py-1 rounded border border-red-500/20 uppercase tracking-widest">Before: Linktree Layout</div>
+                        <p class="font-serif text-lg text-gray-500 text-center italic max-w-xs">"Confusing navigation paths. Clunky third-party interfaces. Poor speed."</p>
+                    </div>
+                    <!-- After state (Active) -->
+                    <div id="p2-after" class="absolute inset-0 bg-cover bg-center transition-opacity duration-500" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1000');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-sky-500/10 text-sky-400 text-[10px] font-bold px-2.5 py-1 rounded border border-sky-500/20 uppercase tracking-widest">After: ServeSite Custom</div>
+                    </div>
+                    
+                    <!-- Toggle Controls -->
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center z-20">
+                        <div class="flex gap-2">
+                            <button onclick="toggleProjectView('p2', 'before')" id="p2-btn-before" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">Before</button>
+                            <button onclick="toggleProjectView('p2', 'after')" id="p2-btn-after" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-brand-bg transition-colors">After</button>
+                        </div>
+                        <span class="glass-card px-3 py-1.5 rounded-lg text-[10px] font-mono tracking-wider text-sky-400 uppercase">Deployed in 7 Days</span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Premium Café & Roastery</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">The Crema Laboratory</h3>
+                        <p class="text-brand-textSecondary text-sm mt-3 leading-relaxed max-w-lg">Hyper-fast minimalist architecture utilizing premium typography layout designs, direct integrated WhatsApp order lines, and local SEO.</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-emerald-400 font-extrabold text-xl leading-none">0.4s</p>
+                        <p class="text-brand-textSecondary text-[9px] uppercase tracking-widest mt-1">Lighthouse Load</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SAVINGS / ROI CALCULATOR -->
+    <section class="py-24 px-6 md:px-12 bg-[#0A0A10]/90 border-y border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-sky-500/[0.01] -z-10"></div>
+        <div class="max-w-4xl mx-auto glass-card p-8 md:p-12 rounded-3xl relative">
+            <div class="text-center md:text-left mb-10">
+                <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">The Savings Equation</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">Calculate Your Direct Booking Savings</h3>
+                <p class="text-brand-textSecondary text-sm mt-2">Find out how much aggregator commissions (Zomato, Swiggy, Dineout cuts) you can recover with a custom website.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Interactive Controls -->
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-white mb-2" id="orders-label">Estimated Monthly Orders: 500</label>
+                        <input type="range" id="orders-range" min="100" max="3000" step="50" value="500" class="w-full accent-sky-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-white mb-2" id="ticket-label">Average Order Value: ₹600</label>
+                        <input type="range" id="ticket-range" min="200" max="2500" step="50" value="600" class="w-full accent-sky-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-white mb-2" id="commission-label">Platform Commission Cut: 20%</label>
+                        <input type="range" id="commission-range" min="10" max="30" step="1" value="20" class="w-full accent-sky-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Live Results -->
+                <div class="p-8 rounded-2xl bg-[#0B0B0F] border border-white/10 flex flex-col items-center justify-center text-center">
+                    <span class="text-xs font-bold text-brand-textSecondary uppercase tracking-wider mb-2">Estimated Monthly Loss to Aggregators</span>
+                    <span class="text-4xl md:text-5xl font-extrabold text-sky-400 tracking-tight" id="calc-savings">₹60,000</span>
+                    <span class="text-[10px] text-brand-textSecondary mt-2">Can be bypassed with a direct custom booking pipeline.</span>
+                    <hr class="w-full border-white/5 my-6">
+                    <a href="#contact" class="text-xs font-bold uppercase tracking-wider text-brand-bg bg-white py-3 px-6 rounded-xl w-full block hover:bg-gray-200 transition-colors">Recover This Margin</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS TIMELINE -->
+    <section class="py-32 px-6 md:px-12 max-w-4xl mx-auto">
+        <div class="text-center mb-24">
+            <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">The Studio Pipeline</span>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mt-2">How We Build</h2>
+            <p class="text-brand-textSecondary mt-3 text-sm md:text-base max-w-md mx-auto">From strategic scope to launch, crafted carefully step-by-step.</p>
+        </div>
+
+        <div class="relative border-l border-white/10 ml-4 md:ml-32 space-y-16">
+            <!-- Phase 1 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky-500 border-4 border-brand-bg"></div>
+                <span class="text-xs font-mono font-bold text-sky-400 block mb-1">PHASE 01</span>
+                <h4 class="text-white font-bold text-lg mb-2">Discovery & Strategic Architecture</h4>
+                <p class="text-brand-textSecondary text-sm max-w-xl">We analyze your menu, target client base, average ticket values, and brand aesthetics to map an optimal layout.</p>
+            </div>
+            <!-- Phase 2 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-zinc-700 border-4 border-brand-bg"></div>
+                <span class="text-xs font-mono font-bold text-brand-textSecondary block mb-1">PHASE 02</span>
+                <h4 class="text-white font-bold text-lg mb-2">Interactive Interface Prototype</h4>
+                <p class="text-brand-textSecondary text-sm max-w-xl">We build custom Figma layouts of the visitor journey focusing entirely on premium typography and aesthetic hospitality vibes.</p>
+            </div>
+            <!-- Phase 3 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-zinc-700 border-4 border-brand-bg"></div>
+                <span class="text-xs font-mono font-bold text-brand-textSecondary block mb-1">PHASE 03</span>
+                <h4 class="text-white font-bold text-lg mb-2">High-Performance Clean Development</h4>
+                <p class="text-brand-textSecondary text-sm max-w-xl">Writing clean, modular Next.js or pure static systems. Every asset is optimized for loading speeds and search discovery.</p>
+            </div>
+            <!-- Phase 4 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-zinc-700 border-4 border-brand-bg"></div>
+                <span class="text-xs font-mono font-bold text-brand-textSecondary block mb-1">PHASE 04</span>
+                <h4 class="text-white font-bold text-lg mb-2">Launch, Tracking & Secure Handoff</h4>
+                <p class="text-brand-textSecondary text-sm max-w-xl">Mapping secure domains, setting up custom emails, setting up Analytics tracking, and launching directly to search engines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING CARDS -->
+    <section id="pricing" class="py-32 px-6 md:px-12 max-w-6xl mx-auto relative">
+        <div class="text-center mb-20">
+            <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">Pricing Plans</span>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-gradient mt-2">Flat Rate. Complete Clarity.</h2>
+            <p class="text-brand-textSecondary mt-3 text-sm md:text-base max-w-md mx-auto">No recurring monthly fees. No locked-in agency dependencies.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <!-- Card 1 -->
+            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between relative">
+                <div>
+                    <h4 class="text-white font-bold text-xl mb-1">Static Platform</h4>
+                    <p class="text-brand-textSecondary text-xs mb-6">Designed for cafés & local outlets wanting clean local digital presence.</p>
+                    <div class="text-3xl font-extrabold text-white mb-6">₹15,000</div>
+                    <hr class="border-white/5 mb-6">
+                    <ul class="space-y-4 text-xs text-brand-textSecondary">
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> High-End Custom Design (Up to 3 Pages)</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Fully Mobile Responsive Code</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Direct Kitchen WhatsApp Routing</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Google Business Profile Setup</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="w-full mt-8 block bg-white/5 hover:bg-white/10 text-white font-bold text-center py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all border border-white/10">Select Package</a>
+            </div>
+
+            <!-- Card 2 (Featured) -->
+            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between relative border-sky-500/40 shadow-2xl shadow-sky-500/[0.04]">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-sky-500 text-brand-bg font-extrabold uppercase tracking-widest text-[10px] px-4 py-1.5 rounded-full">Highly Recommended</div>
+                <div>
+                    <h4 class="text-white font-bold text-xl mb-1">Dynamic Platform</h4>
+                    <p class="text-brand-textSecondary text-xs mb-6">Designed for growing restaurants and hotels wanting total booking control.</p>
+                    <div class="text-3xl font-extrabold text-sky-400 mb-6"><span class="text-xs font-medium text-brand-textSecondary">Starting at</span> ₹20,000</div>
+                    <hr class="border-white/5 mb-6">
+                    <ul class="space-y-4 text-xs text-gray-200">
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Dynamic Content Management (Up to 8 Pages)</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Easy Menu Editing Dashboard</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Integrated Table Booking System</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Custom Interactive Reservation Alerts</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="w-full mt-8 block bg-sky-500 hover:bg-sky-400 text-brand-bg font-bold text-center py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all">Select Package</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between relative">
+                <div>
+                    <h4 class="text-white font-bold text-xl mb-1">Ongoing Maintenance</h4>
+                    <p class="text-brand-textSecondary text-xs mb-6">Continuous operational management & prompt code refinements.</p>
+                    <div class="text-3xl font-extrabold text-white mb-6">₹5,000 <span class="text-xs font-medium text-brand-textSecondary">/ 3 months</span></div>
+                    <hr class="border-white/5 mb-6">
+                    <ul class="space-y-4 text-xs text-brand-textSecondary">
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Regular Menu & Pricing Refinements</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> 24/7 Server Performance Auditing</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Security Auditing & Code backups</li>
+                        <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0"></i> Priority Structural Changes</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="w-full mt-8 block bg-white/5 hover:bg-white/10 text-white font-bold text-center py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all border border-white/10">Select Package</a>
+            </div>
+        </div>
+
+        <p class="text-center text-xs text-brand-textSecondary mt-12">
+            <i data-lucide="info" class="w-3.5 h-3.5 inline mr-1 align-text-bottom text-sky-400"></i> Domain & premium cloud hosting resources are billed separately at direct registrar costs.
+        </p>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="bg-[#0A0A10]/90 py-32 px-6 md:px-12 border-y border-white/5 relative">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">Clarity</span>
+                <h2 class="text-3xl font-bold text-white mt-2">Common Inquiries</h2>
+            </div>
+
+            <!-- Accordion layout -->
+            <div class="space-y-4">
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full p-6 text-left flex justify-between items-center text-white font-semibold text-base focus:outline-none">
+                        How long does a complete custom build take?
+                        <i data-lucide="plus" id="faq-icon-1" class="w-4 h-4 text-sky-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-6 pb-6 text-brand-textSecondary text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Typically 7 to 10 working days for our Static Platforms, and 14 to 21 working days for multi-tier Dynamic Platforms containing customized booking databases or complex interactive designs.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full p-6 text-left flex justify-between items-center text-white font-semibold text-base focus:outline-none">
+                        Can we modify food menu pricing ourselves?
+                        <i data-lucide="plus" id="faq-icon-2" class="w-4 h-4 text-sky-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-6 pb-6 text-brand-textSecondary text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Yes. For our Dynamic Platforms, we configure a secure, visual dashboard allowing you or your restaurant staff to modify menu prices, update inventory items, and label options without touching a single line of code.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full p-6 text-left flex justify-between items-center text-white font-semibold text-base focus:outline-none">
+                        Will you help map our Google Business Profile?
+                        <i data-lucide="plus" id="faq-icon-3" class="w-4 h-4 text-sky-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-6 pb-6 text-brand-textSecondary text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Absolutely. We ensure your Google Business Profile is accurately synchronized with your custom domain markup, allowing organic location results to direct customers straight to your direct website reservation path.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(4)" class="w-full p-6 text-left flex justify-between items-center text-white font-semibold text-base focus:outline-none">
+                        Why choose an IIT Madras student-engineered site over WordPress?
+                        <i data-lucide="plus" id="faq-icon-4" class="w-4 h-4 text-sky-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-4" class="hidden px-6 pb-6 text-brand-textSecondary text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Standard WordPress templates are slow, rely on outdated databases, and require constant security patches. We build on modern performance stacks that guarantee rapid mobile loading and eliminate security vulnerabilities entirely.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA & CONTACT FORM -->
+    <section id="contact" class="py-32 px-6 md:px-12 max-w-5xl mx-auto text-center relative">
+        <div class="absolute inset-0 bg-sky-500/[0.02] blur-3xl -z-10"></div>
+        <span class="text-xs tracking-widest text-sky-400 font-bold uppercase">Begin Your Shift</span>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gradient mt-4 mb-6">Let's Secure Your Digital Storefront.</h2>
+        <p class="text-brand-textSecondary text-lg max-w-xl mx-auto font-light leading-relaxed mb-16">
+            Work directly with engineers. Schedule your free consultation & complete digital visibility blueprint presentation.
+        </p>
+
+        <!-- Conversational Form container -->
+        <div class="max-w-2xl mx-auto glass-card p-8 md:p-12 rounded-3xl text-left mb-20">
+            <h4 class="text-white font-bold text-xl mb-6">Request Your Strategic Blueprint</h4>
+            
+            <form id="lead-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-brand-textSecondary mb-2">Your Name</label>
+                        <input type="text" required class="w-full bg-[#0E0E15] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500 text-sm transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-brand-textSecondary mb-2">Business Name</label>
+                        <input type="text" required class="w-full bg-[#0E0E15] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500 text-sm transition-colors">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-brand-textSecondary mb-2">Email Address</label>
+                        <input type="email" required class="w-full bg-[#0E0E15] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500 text-sm transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-brand-textSecondary mb-2">Mobile Number</label>
+                        <input type="tel" required class="w-full bg-[#0E0E15] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500 text-sm transition-colors">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-brand-textSecondary mb-2">Business Type</label>
+                    <select class="w-full bg-[#0E0E15] border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500 text-sm transition-colors">
+                        <option value="restaurant">Restaurant / Bistro</option>
+                        <option value="cafe">Boutique Café</option>
+                        <option value="hotel">Hotel / Luxury Stay</option>
+                        <option value="kitchen">Cloud Kitchen Network</option>
+                        <option value="other">Other Local Business</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-brand-bg font-extrabold uppercase tracking-wider py-4 rounded-xl text-xs transition-colors">
+                    Generate My Free Design Blueprint
+                </button>
+            </form>
+
+            <!-- Inline Success Alert (Replaces alert()) -->
+            <div id="form-success" class="hidden mt-6 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 flex items-center gap-3 text-emerald-400">
+                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                <span class="text-xs font-semibold">Your blueprint request was dispatched. One of our student-founders will reach out over WhatsApp within 4 hours.</span>
+            </div>
+        </div>
+
+        <!-- Quick Social Engagement Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-24">
+            <a href="https://wa.me/91XXXXXXXXXX" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-emerald-500/[0.02]">
+                <i data-lucide="message-circle" class="w-6 h-6 text-emerald-400"></i>
+                <span class="text-white font-bold text-sm">WhatsApp</span>
+                <span class="text-[10px] text-brand-textSecondary">Direct founder line</span>
+            </a>
+            <a href="mailto:hello@servesite.com" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-sky-500/[0.02]">
+                <i data-lucide="mail" class="w-6 h-6 text-sky-400"></i>
+                <span class="text-white font-bold text-sm">Email Studio</span>
+                <span class="text-[10px] text-brand-textSecondary">hello@servesite.com</span>
+            </a>
+            <a href="https://linkedin.com" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-blue-500/[0.02]">
+                <i data-lucide="linkedin" class="w-6 h-6 text-blue-400"></i>
+                <span class="text-white font-bold text-sm">LinkedIn</span>
+                <span class="text-[10px] text-brand-textSecondary">IITM Professional networks</span>
+            </a>
+            <a href="tel:+91XXXXXXXXXX" class="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-amber-500/[0.02]">
+                <i data-lucide="phone" class="w-6 h-6 text-amber-400"></i>
+                <span class="text-white font-bold text-sm">Direct Call</span>
+                <span class="text-[10px] text-brand-textSecondary">Urgent business requests</span>
+            </a>
+        </div>
+
+        <hr class="border-white/5 mb-12">
+
+        <!-- FOOTER BRAND INFO -->
+        <div class="flex flex-col md:flex-row justify-between items-center text-xs text-brand-textSecondary gap-4">
+            <p>© 2026 ServeSite Studio. Engineered in Chennai by IIT Madras Founders. All Rights Reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">Terms of Operations</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy Principles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Mobile menu drawer toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        menuBtn.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('hidden');
+        });
+
+        function toggleDrawer() {
+            mobileDrawer.classList.add('hidden');
+        }
+
+        // Header glass transition on scroll
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('bg-brand-bg/90', 'border-white/10');
+                header.classList.remove('bg-brand-bg/60', 'border-white/5');
+            } else {
+                header.classList.add('bg-brand-bg/60', 'border-white/5');
+                header.classList.remove('bg-brand-bg/90', 'border-white/10');
+            }
+        });
+
+        // Case Study Before/After toggles
+        function toggleProjectView(projId, state) {
+            const beforeDiv = document.getElementById(`${projId}-before`);
+            const afterDiv = document.getElementById(`${projId}-after`);
+            const btnBefore = document.getElementById(`${projId}-btn-before`);
+            const btnAfter = document.getElementById(`${projId}-btn-after`);
+
+            if (state === 'before') {
+                beforeDiv.classList.remove('opacity-0');
+                beforeDiv.classList.add('opacity-100', 'z-10');
+                afterDiv.classList.remove('z-10');
+                afterDiv.classList.add('opacity-0');
+                
+                btnBefore.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-brand-bg transition-colors";
+                btnAfter.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition-colors";
+            } else {
+                afterDiv.classList.remove('opacity-0');
+                afterDiv.classList.add('opacity-100', 'z-10');
+                beforeDiv.classList.remove('z-10');
+                beforeDiv.classList.add('opacity-0');
+                
+                btnAfter.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-brand-bg transition-colors";
+                btnBefore.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition-colors";
+            }
+        }
+
+        // Commission savings calculator logic
+        const ordersRange = document.getElementById('orders-range');
+        const ticketRange = document.getElementById('ticket-range');
+        const commissionRange = document.getElementById('commission-range');
+
+        const ordersLabel = document.getElementById('orders-label');
+        const ticketLabel = document.getElementById('ticket-label');
+        const commissionLabel = document.getElementById('commission-label');
+        const calcSavingsResult = document.getElementById('calc-savings');
+
+        function updateCalculator() {
+            const orders = parseInt(ordersRange.value);
+            const ticketVal = parseInt(ticketRange.value);
+            const commission = parseInt(commissionRange.value);
+
+            ordersLabel.innerText = `Estimated Monthly Orders: ${orders}`;
+            ticketLabel.innerText = `Average Order Value: ₹${ticketVal}`;
+            commissionLabel.innerText = `Platform Commission Cut: ${commission}%`;
+
+            const totalLossValue = orders * ticketVal * (commission / 100);
+            calcSavingsResult.innerText = `₹${totalLossValue.toLocaleString('en-IN')}`;
+        }
+
+        ordersRange.addEventListener('input', updateCalculator);
+        ticketRange.addEventListener('input', updateCalculator);
+        commissionRange.addEventListener('input', updateCalculator);
+
+        // FAQ Toggle Logic
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(45deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Contact Form Submission Action
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const successDiv = document.getElementById('form-success');
+            successDiv.classList.remove('hidden');
+            document.getElementById('lead-form').reset();
+            
+            // Auto hide message after 10 seconds
+            setTimeout(() => {
+                successDiv.classList.add('hidden');
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
